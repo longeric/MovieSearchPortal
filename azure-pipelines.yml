@@ -19,7 +19,7 @@ steps:
 - script: npm install
   displayName: 'Install Dependencies'
 
-- script: npx ng build --prod
+- script: npm run build
   displayName: 'Build'
   
 - task: PublishBuildArtifacts@1
