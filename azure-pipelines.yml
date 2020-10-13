@@ -26,3 +26,4 @@ steps:
   inputs:
     pathToPublish: dist
     artifactName: output
+  displayName: 'Build project'  
