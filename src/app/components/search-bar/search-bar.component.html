@@ -1,0 +1,16 @@
+<div style="width: 100%">
+  <div>
+    <mat-form-field style="width: 80%" appearance="outline">
+      <mat-label>Movie Search</mat-label>
+      <input #searchInput
+             [matAutocomplete]="auto"
+             matInput
+             placeholder="Searching by Movie Search"
+             type="text">
+      <mat-autocomplete #auto="matAutocomplete">
+
+      </mat-autocomplete>
+    </mat-form-field>
+    <a mat-button href="/search" >Basic</a>
+  </div>
+</div>
