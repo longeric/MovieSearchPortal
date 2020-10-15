@@ -9,6 +9,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatInputModule} from "@angular/material/input";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatButtonModule} from "@angular/material/button";
+import {SearchResults} from "./dummydata/search-results";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 @NgModule({
   declarations: [
@@ -23,9 +25,10 @@ import {MatButtonModule} from "@angular/material/button";
     BrowserAnimationsModule,
     MatInputModule,
     MatAutocompleteModule,
-    MatButtonModule
+    MatButtonModule,
+    MatProgressBarModule
   ],
-  providers: [],
+  providers: [SearchResults],
   bootstrap: [AppComponent]
 })
 export class AppModule {
