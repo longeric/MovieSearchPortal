@@ -3,14 +3,18 @@
     <mat-form-field style="width: 80%" appearance="outline">
       <mat-label>Movie Search</mat-label>
       <input #searchInput
+             [value]="searchResult"
              [matAutocomplete]="auto"
              matInput
              placeholder="Searching by Movie Search"
              type="text">
-      <mat-autocomplete #auto="matAutocomplete">
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="_selectResult($event)">
+        <mat-option *ngFor="let autocompleteResult of autocompleteResults">
+          <div>{{autocompleteResult}}</div>
+        </mat-option>
 
       </mat-autocomplete>
     </mat-form-field>
-    <a mat-button href="/search" >Basic</a>
+    <button mat-raised-button color="primary" (click)="_searching()" >Basic</button>
   </div>
 </div>

@@ -1,6 +1,10 @@
-<h1>search-result works!</h1>
-<nav>
-  <ul>
-    <li><a routerLink="/" routerLinkActive="active">back</a></li>
-  </ul>
-</nav>
+<div>
+  <app-search-bar [searchResult] = searchResult></app-search-bar>
+</div>
+<mat-progress-bar  *ngIf="progressValue != 100" mode="determinate" [value]="progressValue"></mat-progress-bar>
+
+<div *ngFor="let allSearchResult of allSearchResults">
+  <div>{{allSearchResult}}</div>
+</div>
+
+<button mat-raised-button (click)="_back()" >Back</button>
