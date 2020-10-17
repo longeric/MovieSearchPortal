@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  API_HOST: "http://infsci2140-backend.azurewebsites.net"
-  // API_HOST: "http://localhost:8080"
+  // API_HOST: "http://infsci2140-backend.azurewebsites.net"
+  API_HOST: "http://localhost:8080"
 };
 
 /*
