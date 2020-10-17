@@ -4,6 +4,7 @@ import {fromEvent} from "rxjs";
 import {debounceTime, map} from "rxjs/operators";
 import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
 import {SearchResultsService} from "../../services/search-results.service";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-search-bar',
@@ -23,7 +24,9 @@ export class SearchBarComponent implements OnInit {
   constructor(private router: Router,
               private searchResultsService: SearchResultsService,) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(environment.production)
+  }
 
   ngAfterViewInit(): void {
     fromEvent(this.searchInput.nativeElement, "keyup")
