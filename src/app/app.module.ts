@@ -11,6 +11,7 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatButtonModule} from "@angular/material/button";
 import {SearchResults} from "./dummydata/search-results";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -26,9 +27,11 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
     MatInputModule,
     MatAutocompleteModule,
     MatButtonModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    HttpClientModule
   ],
-  providers: [SearchResults],
+  providers: [
+    SearchResults],
   bootstrap: [AppComponent]
 })
 export class AppModule {

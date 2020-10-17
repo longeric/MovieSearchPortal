@@ -16,13 +16,17 @@ export class SearchResultComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private searchResultsService: SearchResultsService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.allSearchResults = [];
-    this._delay(2000).then(() => this.progressValue = 20)
+    this.progressValue = 20
     this.route.params.subscribe(params => this.searchResult = params["searchName"])
-    this._delay(4000).then(() => this.progressValue = 60)
-    this._delay(5000).then(() => this.progressValue = 100)
-    this.allSearchResults = this._getAllSearchResults()
+    this.progressValue = 60
+    this._delay(1000).then(() => {
+      this._getAllSearchResults().then((results) => {
+        this.progressValue = 100;
+        this.allSearchResults = results;
+      })
+    })
   }
 
   _delay(milliSeconds: number) {
