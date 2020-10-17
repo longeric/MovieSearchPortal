@@ -1,10 +1,11 @@
+<button mat-raised-button (click)="_back()" >Back</button>
+<br>
+<br>
 <div>
   <app-search-bar [searchResult] = searchResult></app-search-bar>
 </div>
-<mat-progress-bar  *ngIf="progressValue != 100" mode="determinate" [value]="progressValue"></mat-progress-bar>
+<mat-progress-bar style="width: 80%" *ngIf="progressValue != 100" mode="determinate" [value]="progressValue"></mat-progress-bar>
 
 <div *ngFor="let allSearchResult of allSearchResults">
   <div>{{allSearchResult}}</div>
 </div>
-
-<button mat-raised-button (click)="_back()" >Back</button>
