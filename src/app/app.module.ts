@@ -3,15 +3,15 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {SearchHomeComponent} from './components/search-home/search-home.component';
-import {SearchResultComponent} from "./components/search-result/search-result.component";
+import {SearchResultComponent} from './components/search-result/search-result.component';
 import {SearchBarComponent} from './components/search-bar/search-bar.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatInputModule} from "@angular/material/input";
-import {MatAutocompleteModule} from "@angular/material/autocomplete";
-import {MatButtonModule} from "@angular/material/button";
-import {SearchResults} from "./dummydata/search-results";
-import {MatProgressBarModule} from "@angular/material/progress-bar";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {MatInputModule} from '@angular/material/input';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatButtonModule} from '@angular/material/button';
+import {SearchResults} from './dummydata/search-results';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [

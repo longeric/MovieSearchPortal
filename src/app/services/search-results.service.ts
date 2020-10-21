@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import {SearchResults} from "../dummydata/search-results";
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../environments/environment";
+import {Injectable} from '@angular/core';
+import {SearchResults} from '../dummydata/search-results';
+import {HttpHeaders} from '@angular/common/http';
+import {HttpService} from '../_helper/http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,21 +9,32 @@ import {environment} from "../../environments/environment";
 export class SearchResultsService {
 
   constructor(private searchResults: SearchResults,
-              private http: HttpClient,) { }
+              private http: HttpService,) {
+  }
 
-  _getAllSearchResults(data): Promise<any> {
-    return this.http.get(`${environment.API_HOST}/searchResult`, {
-      headers: {
-        "Access-Control-Allow-Origin": "*"
+  _getAllSearchResults(data): Promise<string[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*'
+      }),
+      params: {
+        searchName: data
       }
-    }).toPromise()
-      .catch((e) => {
-      console.log(e);
-    })
-    // return this.searchResults._getAllSearchResults(data);
+    };
+
+    return this.http.get('searchResult', httpOptions);
   }
 
   _searchResultsAfterFilter(data) {
-    return this.searchResults._searchResultsAfterFilter(data)
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*'
+      }),
+      params: {
+        searchName: data
+      }
+    };
+
+    return this.http.get('relevant', httpOptions);
   }
 }
