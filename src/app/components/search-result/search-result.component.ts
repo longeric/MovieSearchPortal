@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {SearchResults} from "../../dummydata/search-results";
-import {SearchResultsService} from "../../services/search-results.service";
+import {ActivatedRoute} from '@angular/router';
+import {SearchResultsService} from '../../services/search-results.service';
 
 @Component({
   selector: 'app-search-result',
@@ -9,7 +8,7 @@ import {SearchResultsService} from "../../services/search-results.service";
   styleUrls: ['./search-result.component.css']
 })
 export class SearchResultComponent implements OnInit {
-  searchResult: "EMPTY";
+  searchResult: 'EMPTY';
   allSearchResults: string[] = [];
   progressValue: number;
 
@@ -18,15 +17,15 @@ export class SearchResultComponent implements OnInit {
 
   async ngOnInit() {
     this.allSearchResults = [];
-    this.progressValue = 20
-    this.route.params.subscribe(params => this.searchResult = params["searchName"])
-    this.progressValue = 60
+    this.progressValue = 20;
+    this.route.params.subscribe(params => this.searchResult = params.searchName);
+    this.progressValue = 60;
     this._delay(1000).then(() => {
       this._getAllSearchResults().then((results) => {
         this.progressValue = 100;
         this.allSearchResults = results;
-      })
-    })
+      });
+    });
   }
 
   _delay(milliSeconds: number) {
@@ -38,6 +37,6 @@ export class SearchResultComponent implements OnInit {
   }
 
   _back() {
-    window.history.back()
+    window.history.back();
   }
 }
