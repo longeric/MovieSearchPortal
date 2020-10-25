@@ -3,11 +3,12 @@
     <mat-form-field style="width: 80%" appearance="outline">
       <mat-label>Movie Search</mat-label>
       <input #searchInput
-             [value]="searchResult"
              [matAutocomplete]="auto"
              matInput
              placeholder="Searching by Movie Search"
              type="text">
+      <button matSuffix mat-mini-fab color="primary" (click)="_searching()"><mat-icon  >search</mat-icon></button>
+
       <mat-autocomplete #auto="matAutocomplete" (optionSelected)="_selectResult($event)">
         <mat-option *ngFor="let autocompleteResult of autocompleteResults">
           <div>{{autocompleteResult}}</div>
@@ -15,6 +16,5 @@
 
       </mat-autocomplete>
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="_searching()" >Basic</button>
   </div>
 </div>

@@ -6,6 +6,28 @@
 </div>
 <mat-progress-bar style="width: 80%" *ngIf="progressValue != 100" mode="determinate" [value]="progressValue"></mat-progress-bar>
 
-<div *ngFor="let allSearchResult of allSearchResults">
-  <div>{{allSearchResult}}</div>
+
+<div *ngIf="progressValue == 100">
+  <table mat-table [dataSource]="dataSource" style="width: 80%;">
+    <ng-container matColumnDef="result">
+      <th mat-header-cell *matHeaderCellDef>
+        <div *ngIf="this.runningTime">Taking time: {{this.runningTime}}s</div>
+      </th>
+
+      <td mat-cell *matCellDef="let element">
+        <h3>
+          <a [href]="_getUrl(element)" target="_blank" style="text-decoration: none">{{element}}</a>
+        </h3>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #matPaginator showFirstLastButtons></mat-paginator>
 </div>
+
+<footer>
+
+</footer>
