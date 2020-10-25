@@ -6,7 +6,8 @@
              [matAutocomplete]="auto"
              matInput
              placeholder="Searching by Movie Search"
-             type="text">
+             type="text"
+             (keyup.enter) = "_searching()">
       <button matSuffix mat-mini-fab color="primary" (click)="_searching()"><mat-icon  >search</mat-icon></button>
 
       <mat-autocomplete #auto="matAutocomplete" (optionSelected)="_selectResult($event)">
