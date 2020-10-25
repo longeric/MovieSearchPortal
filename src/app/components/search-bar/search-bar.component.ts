@@ -1,4 +1,11 @@
-import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import {Router} from '@angular/router';
 import {fromEvent} from 'rxjs';
 import {debounceTime, map} from 'rxjs/operators';
@@ -15,16 +22,17 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
   @Input()
   searchResult = '';
 
-  @ViewChild('searchInput', {static: false})
+  @ViewChild('searchInput', {read: ElementRef, static: true})
   searchInput: ElementRef<HTMLInputElement>;
 
   autocompleteResults: string[] = [];
 
   constructor(private router: Router,
-              private searchResultsService: SearchResultsService,) {
+              private searchResultsService: SearchResultsService) {
   }
 
   ngOnInit() {
+    this.searchInput.nativeElement.value = this.searchResult;
   }
 
   ngAfterViewInit(): void {
@@ -40,12 +48,21 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
     selectedResult.source.options.forEach(async (result, index) => {
       if (result.selected) {
         this.searchInput.nativeElement.value = this.autocompleteResults[index];
+        this._routeToNewSearchPage(this.searchInput.nativeElement.value);
       }
     });
   }
 
   _searching() {
     const searchName = this.searchInput.nativeElement.value;
-    this.router.navigate(['/search', searchName]).then(result => location.reload());
+    this._routeToNewSearchPage(searchName);
+  }
+
+  _routeToNewSearchPage(searchName: string) {
+    if (this.router.url === '/') {
+      this.router.navigate(['/search', searchName]);
+    } else {
+      this.router.navigate(['/search', searchName]).then(() => location.reload());
+    }
   }
 }
