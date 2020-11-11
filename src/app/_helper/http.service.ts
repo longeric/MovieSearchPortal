@@ -11,6 +11,10 @@ export class HttpService {
   }
 
   get<T>(url: string, httpOptions: any): Promise<any> {
-    return this.http.get<T>(`${environment.API_HOST}/${url}`, httpOptions).toPromise();
+    return this.http.get<T>(`${environment.API_HOST}/${url}`, httpOptions)
+      .toPromise()
+      .catch(e => {
+        console.log(e);
+      });
   }
 }
