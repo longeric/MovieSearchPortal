@@ -17,6 +17,7 @@ export class SearchResultsService {
   _getAllSearchResults(data): Promise<string[]> {
     const httpOptions = {
       params: {
+        // category
         searchName: data
       }
     };

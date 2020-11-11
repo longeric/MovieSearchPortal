@@ -26,6 +26,7 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
   searchInput: ElementRef<HTMLInputElement>;
 
   autocompleteResults: string[] = [];
+  // historyString:string = '';
 
   constructor(private router: Router,
               private searchResultsService: SearchResultsService) {
@@ -33,6 +34,7 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.searchInput.nativeElement.value = this.searchResult;
+    // localStorage.setItem('history', this.historyString);
   }
 
   ngAfterViewInit(): void {
@@ -40,6 +42,7 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
       .pipe(map(x => this.searchInput.nativeElement.value),
         debounceTime(10))
       .subscribe(async (data) => {
+        // console.log(localStorage.getItem('history'));
         this.autocompleteResults = await this.searchResultsService._searchResultsAfterFilter(data);
       });
   }
@@ -55,6 +58,7 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
 
   _searching() {
     const searchName = this.searchInput.nativeElement.value;
+    // this.historyString += searchName + '|';
     this._routeToNewSearchPage(searchName);
   }
 
