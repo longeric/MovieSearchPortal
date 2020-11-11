@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {SearchResults} from '../dummydata/search-results';
-import {HttpHeaders} from '@angular/common/http';
 import {HttpService} from '../_helper/http.service';
+import {OMDbHttpServiceService} from '../_helper/omdb-http-service.service';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +10,12 @@ import {HttpService} from '../_helper/http.service';
 export class SearchResultsService {
 
   constructor(private searchResults: SearchResults,
-              private http: HttpService,) {
+              private http: HttpService,
+              private OMDbHttp: OMDbHttpServiceService) {
   }
 
   _getAllSearchResults(data): Promise<string[]> {
     const httpOptions = {
-      headers: new HttpHeaders({
-        'Access-Control-Allow-Origin': '*'
-      }),
       params: {
         searchName: data
       }
@@ -25,16 +24,20 @@ export class SearchResultsService {
     return this.http.get('searchResult', httpOptions);
   }
 
-  _searchResultsAfterFilter(data) {
+  async _searchResultsAfterFilter(data): Promise<any> {
     const httpOptions = {
-      headers: new HttpHeaders({
-        'Access-Control-Allow-Origin': '*'
-      }),
       params: {
-        searchName: data
+        apikey: environment.OMDb_APIKEY,
+        s: data
       }
     };
 
-    return this.http.get('relevant', httpOptions);
+    const response = await this.OMDbHttp.get(httpOptions);
+
+    if (response.Response === 'False') {
+      return [];
+    }
+
+    return [...new Set(response.Search.map(movie => movie.Title))];
   }
 }

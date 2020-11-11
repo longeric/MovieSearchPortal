@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   // API_HOST: "http://infsci2140-backend.azurewebsites.net"
-  API_HOST: "http://localhost:8080"
+  API_HOST: 'http://localhost:8080',
+  OMDb_HOST: 'http://www.omdbapi.com',
+  OMDb_APIKEY: 'c7a67f5a'
 };
 
 /*
