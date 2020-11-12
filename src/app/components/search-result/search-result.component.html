@@ -1,11 +1,18 @@
-<button mat-raised-button (click)="_back()" >Back</button>
 <br>
-<br>
-<div>
-  <app-search-bar [searchResult] = searchResult></app-search-bar>
-</div>
-<mat-progress-bar style="width: 80%" *ngIf="progressValue != 100" mode="determinate" [value]="progressValue"></mat-progress-bar>
+  <div class="row">
+    <div class="col-lg-1 col-sm-6 col-md-3">
+        <div>
+        <img src="assets/movie-logo.jpg" width="100%" (click)="_back()" >
+        </div>
+    </div>
+    <div class="col-lg-10">
+      <app-search-bar [searchResult] = searchResult></app-search-bar>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
 
+
+<mat-progress-bar style="width: 80%" *ngIf="progressValue != 100" mode="determinate" [value]="progressValue"></mat-progress-bar>
 
 <div *ngIf="progressValue == 100">
   <table mat-table [dataSource]="dataSource" style="width: 80%;">
