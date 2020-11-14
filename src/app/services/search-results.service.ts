@@ -22,7 +22,7 @@ export class SearchResultsService {
       }
     };
 
-    return this.http.get('searchResult', httpOptions);
+    return this.http.get('testQuery', httpOptions);
   }
 
   async _searchResultsAfterFilter(data): Promise<any> {
