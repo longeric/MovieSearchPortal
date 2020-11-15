@@ -3,6 +3,7 @@ import {SearchResults} from '../dummydata/search-results';
 import {HttpService} from '../_helper/http.service';
 import {OMDbHttpServiceService} from '../_helper/omdb-http-service.service';
 import {environment} from '../../environments/environment';
+import { TheMovieDBHttpService } from '../_helper/the-movie-dbhttp.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ export class SearchResultsService {
 
   constructor(private searchResults: SearchResults,
               private http: HttpService,
-              private OMDbHttp: OMDbHttpServiceService) {
+              private OMDbHttp: OMDbHttpServiceService,
+              private PostMovieDbHttp: TheMovieDBHttpService) {
   }
 
   _getAllSearchResults(data): Promise<string[]> {
@@ -22,7 +24,7 @@ export class SearchResultsService {
       }
     };
 
-    return this.http.get('searchResult', httpOptions);
+    return this.http.get('testQuery', httpOptions);
   }
 
   async _searchResultsAfterFilter(data): Promise<any> {
@@ -40,5 +42,14 @@ export class SearchResultsService {
     }
 
     return [...new Set(response.Search.map(movie => movie.Title))];
+  }
+
+  _getPosterResult(data){
+    const httpOptions = {
+      params: {
+        api_key: environment.PosterMovieDB_APIKey,
+        query: data//here should be each movie name?
+      }
+    };
   }
 }

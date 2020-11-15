@@ -23,6 +23,8 @@
 
       <td mat-cell *matCellDef="let element">
         <h3>
+          <!-- I guess we can put each movie's poster here. 
+            img src=_getPosterResult() ? -->
           <a [href]="_getUrl(element)" target="_blank" style="text-decoration: none">{{element}}</a>
         </h3>
       </td>

@@ -57,4 +57,10 @@ export class SearchResultComponent implements OnInit, AfterViewInit {
   _getUrl(element: string) {
     return 'https://en.wikipedia.org/wiki/' + element;
   }
+
+  _getPosterResult(){
+    return this.searchResultsService._getPosterResult(this.dataSource);
+    //'data' here should be each movie's name
+    //in result page, we also need to call this service
+  }
 }
