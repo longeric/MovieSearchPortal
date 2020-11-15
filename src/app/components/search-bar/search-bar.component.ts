@@ -11,6 +11,7 @@ import {fromEvent} from 'rxjs';
 import {debounceTime, map} from 'rxjs/operators';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {SearchResultsService} from '../../services/search-results.service';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-search-bar',
@@ -28,12 +29,15 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
   autocompleteResults: string[] = [];
   // historyString:string = '';
 
+  searchField: FormControl;
+
   constructor(private router: Router,
               private searchResultsService: SearchResultsService) {
   }
 
   ngOnInit() {
     this.searchInput.nativeElement.value = this.searchResult;
+    this.searchField = new FormControl(this.searchResult, [Validators.required, Validators.minLength(10), Validators.maxLength(50)]);
     // localStorage.setItem('history', this.historyString);
   }
 
@@ -67,6 +71,18 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
       this.router.navigate(['/search', searchName]);
     } else {
       this.router.navigate(['/search', searchName]).then(() => location.reload());
+    }
+  }
+
+  _getErrorMessage() {
+    if (this.searchField.hasError('required')) {
+      return 'You must enter a search content';
+    }
+    if (this.searchField.hasError('minlength')) {
+      return 'You must enter a content length over 10 ';
+    }
+    if (this.searchField.hasError('maxlength')) {
+      return 'You must enter a content length below 50 ';
     }
   }
 }

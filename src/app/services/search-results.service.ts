@@ -3,6 +3,7 @@ import {SearchResults} from '../dummydata/search-results';
 import {HttpService} from '../_helper/http.service';
 import {OMDbHttpServiceService} from '../_helper/omdb-http-service.service';
 import {environment} from '../../environments/environment';
+import {QueryResult} from '../models/query-result';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,17 @@ export class SearchResultsService {
     };
 
     return this.http.get('testQuery', httpOptions);
+  }
+
+  _getAllQueryResults(data): Promise<QueryResult[]> {
+    const httpOptions = {
+      params: {
+        // category
+        searchName: data
+      }
+    };
+
+    return this.http.get('testQueryResult', httpOptions);
   }
 
   async _searchResultsAfterFilter(data): Promise<any> {

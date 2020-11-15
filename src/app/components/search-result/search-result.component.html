@@ -1,18 +1,19 @@
 <br>
-  <div class="row">
-    <div class="col-lg-1 col-sm-6 col-md-3">
-        <div>
-        <img src="assets/movie-logo.jpg" width="100%" (click)="_back()" >
-        </div>
+<div class="row">
+  <div class="col-lg-1 col-sm-6 col-md-3">
+    <div>
+      <img src="assets/movie-logo.jpg" width="100%" (click)="_back()">
     </div>
-    <div class="col-lg-10">
-      <app-search-bar [searchResult] = searchResult></app-search-bar>
-    </div>
-    <div class="col-lg-2"></div>
   </div>
+  <div class="col-lg-10">
+    <app-search-bar [searchResult]=searchResult></app-search-bar>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
 
 
-<mat-progress-bar style="width: 80%" *ngIf="progressValue != 100" mode="determinate" [value]="progressValue"></mat-progress-bar>
+<mat-progress-bar style="width: 80%" *ngIf="progressValue != 100" mode="determinate"
+                  [value]="progressValue"></mat-progress-bar>
 
 <div *ngIf="progressValue == 100">
   <table mat-table [dataSource]="dataSource" style="width: 80%;">
@@ -22,9 +23,12 @@
       </th>
 
       <td mat-cell *matCellDef="let element">
+        <br>
         <h3>
-          <a [href]="_getUrl(element)" target="_blank" style="text-decoration: none">{{element}}</a>
+          <a [href]="_getUrl(element.title)" target="_blank" style="text-decoration: none">{{element.title}}</a>
         </h3>
+        <div [innerHTML]=element.content></div>
+        <br>
       </td>
     </ng-container>
 
