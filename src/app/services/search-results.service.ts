@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {SearchResults} from '../dummydata/search-results';
 import {HttpService} from '../_helper/http.service';
-import {OMDbHttpServiceService} from '../_helper/omdb-http-service.service';
+import {OmdbHttpService} from '../_helper/omdb-http.service';
 import {environment} from '../../environments/environment';
 import {QueryResult} from '../models/query-result';
 
@@ -12,7 +12,7 @@ export class SearchResultsService {
 
   constructor(private searchResults: SearchResults,
               private http: HttpService,
-              private OMDbHttp: OMDbHttpServiceService) {
+              private OMDbHttp: OmdbHttpService) {
   }
 
   _getAllSearchResults(data): Promise<string[]> {

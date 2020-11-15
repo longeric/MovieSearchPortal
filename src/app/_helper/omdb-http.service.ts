@@ -5,7 +5,7 @@ import {environment} from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class OMDbHttpServiceService {
+export class OmdbHttpService {
 
   constructor(private http: HttpClient) { }
 
