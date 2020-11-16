@@ -37,7 +37,7 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.searchInput.nativeElement.value = this.searchResult;
-    this.searchField = new FormControl(this.searchResult, [Validators.required, Validators.minLength(10), Validators.maxLength(50)]);
+    this.searchField = new FormControl(this.searchResult, [Validators.required, Validators.minLength(10), Validators.maxLength(150)]);
     // localStorage.setItem('history', this.historyString);
   }
 
