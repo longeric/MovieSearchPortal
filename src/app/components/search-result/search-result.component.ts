@@ -3,6 +3,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {SearchResultsService} from '../../services/search-results.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatDialog} from '@angular/material';
+import {PosterDialogComponent} from '../poster-dialog/poster-dialog.component';
 
 @Component({
   selector: 'app-search-result',
@@ -22,7 +24,8 @@ export class SearchResultComponent implements OnInit, AfterViewInit {
 
   constructor(private route: ActivatedRoute,
               private searchResultsService: SearchResultsService,
-              private router: Router) {
+              private router: Router,
+              private dialog: MatDialog) {
   }
 
   async ngOnInit() {
@@ -58,9 +61,26 @@ export class SearchResultComponent implements OnInit, AfterViewInit {
     return 'https://en.wikipedia.org/wiki/' + element;
   }
 
-  _getPosterResult(){
-    return this.searchResultsService._getPosterResult(this.dataSource);
-    //'data' here should be each movie's name
-    //in result page, we also need to call this service
+  _getPosterResult(element: string){
+    console.log(this.searchResultsService._getPosterResult(element));
+    var result = this.searchResultsService._getPosterResult(element);
+    //const postUrl:String = "";
+    // if(result == "nothing found")
+       const postUrl = "assets/nothing_found.png";
+    // else{
+    //   const postUrl = result;
+    // }
+
+     return postUrl;
+  }
+
+  openDialog(element:string){
+    let poster = this.dialog.open(PosterDialogComponent, {data: {url: this._getPosterResult(element)},
+                                                          height: '400px',
+                                                          width: '300px',
+                                                          position: {right: '2%', bottom: '1%'}
+                                  });
+
+    
   }
 }

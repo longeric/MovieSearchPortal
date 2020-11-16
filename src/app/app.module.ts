@@ -12,16 +12,18 @@ import {MatButtonModule} from '@angular/material/button';
 import {SearchResults} from './dummydata/search-results';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {HttpClientModule} from '@angular/common/http';
-import {MatTableModule} from '@angular/material';
+import {MatDialogModule, MatTableModule} from '@angular/material';
 import {MatPaginatorModule} from '@angular/material';
 import {MatIconModule} from '@angular/material';
+import { PosterDialogComponent } from './components/poster-dialog/poster-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchHomeComponent,
     SearchResultComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    PosterDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -34,11 +36,13 @@ import {MatIconModule} from '@angular/material';
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
   providers: [
     SearchResults],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [PosterDialogComponent]
 })
 export class AppModule {
 }

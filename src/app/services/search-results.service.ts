@@ -44,12 +44,18 @@ export class SearchResultsService {
     return [...new Set(response.Search.map(movie => movie.Title))];
   }
 
-  _getPosterResult(data){
+  async _getPosterResult(element){
     const httpOptions = {
       params: {
         api_key: environment.PosterMovieDB_APIKey,
-        query: data//here should be each movie name?
+        query: element//here should be each movie name?
       }
     };
+    const response = await this.PostMovieDbHttp.get(httpOptions);
+    // console.log(response);
+    if(response.total_results == 0){
+      return "nothing found";
+    }
+    return "http://image.tmdb.org/t/p/w500/"+response.results[0].poster_path;
   }
 }
