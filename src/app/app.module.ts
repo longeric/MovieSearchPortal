@@ -15,6 +15,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {MatTableModule} from '@angular/material';
 import {MatPaginatorModule} from '@angular/material';
 import {MatIconModule} from '@angular/material';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {MatIconModule} from '@angular/material';
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
-    MatIconModule
+    MatIconModule,
+    ReactiveFormsModule
   ],
   providers: [
     SearchResults],
