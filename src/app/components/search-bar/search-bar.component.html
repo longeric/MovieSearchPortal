@@ -6,8 +6,10 @@
              matInput
              placeholder="Searching by Movie Search"
              type="text"
+             [formControl]="searchField"
              (keyup.enter) = "_searching()">
-      <button matSuffix mat-mini-fab color="primary" (click)="_searching()"><mat-icon  >search</mat-icon></button>
+      <button matSuffix mat-mini-fab color="primary" (submit)="_searching()"><mat-icon  >search</mat-icon></button>
+      <mat-error *ngIf="searchField.invalid">{{_getErrorMessage()}}</mat-error>
 
       <mat-autocomplete #auto="matAutocomplete" (optionSelected)="_selectResult($event)">
         <mat-option *ngFor="let autocompleteResult of autocompleteResults">

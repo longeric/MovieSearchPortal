@@ -5,6 +5,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from '@angular/material';
 import {PosterDialogComponent} from '../poster-dialog/poster-dialog.component';
+import {QueryResult} from '../../models/query-result';
 
 @Component({
   selector: 'app-search-result',
@@ -16,7 +17,7 @@ export class SearchResultComponent implements OnInit, AfterViewInit {
   progressValue = 0;
   runningTime: number;
   displayedColumns: string[] = ['result'];
-  dataSource: MatTableDataSource<string>;
+  dataSource: MatTableDataSource<QueryResult>;
   running: number;
 
   @ViewChild('matPaginator', {static: true})
@@ -38,7 +39,8 @@ export class SearchResultComponent implements OnInit, AfterViewInit {
   async ngAfterViewInit() {
     const results = await this._getAllSearchResults();
     this.progressValue = 100;
-    this.dataSource = new MatTableDataSource<string>(results);
+    // this.dataSource = new MatTableDataSource<string>(results);
+    this.dataSource = new MatTableDataSource<QueryResult>(results);
     this.dataSource.paginator = this.paginator;
     this.runningTime = Math.abs(new Date().getMilliseconds() - this.running) / 1000;
   }
@@ -48,7 +50,8 @@ export class SearchResultComponent implements OnInit, AfterViewInit {
   }
 
   async _getAllSearchResults() {
-    return this.searchResultsService._getAllSearchResults(this.searchResult);
+    // return this.searchResultsService._getAllSearchResults(this.searchResult);
+    return this.searchResultsService._getAllQueryResults(this.searchResult);
   }
 
   _back() {

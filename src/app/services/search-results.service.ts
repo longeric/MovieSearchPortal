@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {SearchResults} from '../dummydata/search-results';
 import {HttpService} from '../_helper/http.service';
-import {OMDbHttpServiceService} from '../_helper/omdb-http-service.service';
+import {OmdbHttpService} from '../_helper/omdb-http.service';
 import {environment} from '../../environments/environment';
 import { TheMovieDBHttpService } from '../_helper/the-movie-dbhttp.service';
+import {QueryResult} from '../models/query-result';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,8 @@ export class SearchResultsService {
 
   constructor(private searchResults: SearchResults,
               private http: HttpService,
-              private OMDbHttp: OMDbHttpServiceService,
-              private PostMovieDbHttp: TheMovieDBHttpService) {
+              private OMDbHttp: OmdbHttpService,
+              private PostMovieDbHttp: TheMovieDBHttpService ) {
   }
 
   _getAllSearchResults(data): Promise<string[]> {
@@ -25,6 +26,17 @@ export class SearchResultsService {
     };
 
     return this.http.get('testQuery', httpOptions);
+  }
+
+  _getAllQueryResults(data): Promise<QueryResult[]> {
+    const httpOptions = {
+      params: {
+        // category
+        searchName: data
+      }
+    };
+
+    return this.http.get('testQueryResult', httpOptions);
   }
 
   async _searchResultsAfterFilter(data): Promise<any> {
