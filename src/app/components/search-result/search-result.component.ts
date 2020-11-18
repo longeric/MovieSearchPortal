@@ -18,6 +18,8 @@ export class SearchResultComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<QueryResult>;
   running: number;
 
+  postUrl: any;
+
   @ViewChild('matPaginator', {static: true})
   paginator: MatPaginator;
 
@@ -36,7 +38,6 @@ export class SearchResultComponent implements OnInit, AfterViewInit {
   async ngAfterViewInit() {
     const results = await this._getAllSearchResults();
     this.progressValue = 100;
-    // this.dataSource = new MatTableDataSource<string>(results);
     this.dataSource = new MatTableDataSource<QueryResult>(results);
     this.dataSource.paginator = this.paginator;
     this.runningTime = Math.abs(new Date().getMilliseconds() - this.running) / 1000;
@@ -59,5 +60,16 @@ export class SearchResultComponent implements OnInit, AfterViewInit {
 
   _getUrl(element: string) {
     return 'https://en.wikipedia.org/wiki/' + element;
+  }
+
+  async _getPosterResult(element: string) {
+
+    const result = await this.searchResultsService._getPosterResult(element);
+
+    if (result === 'nothing found') {
+      this.postUrl = 'assets/nothing_found.png';
+    } else {
+      this.postUrl = result;
+    }
   }
 }

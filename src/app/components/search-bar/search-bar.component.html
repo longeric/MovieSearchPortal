@@ -1,21 +1,23 @@
 <div style="width: 100%">
-    <mat-form-field style="width: 100%" appearance="outline">
-      <mat-label>Movie Search</mat-label>
-      <input #searchInput
-             [matAutocomplete]="auto"
-             matInput
-             placeholder="Searching by Movie Search"
-             type="text"
-             [formControl]="searchField"
-             (keyup.enter) = "_searching()">
-      <button matSuffix mat-mini-fab color="primary" (submit)="_searching()"><mat-icon  >search</mat-icon></button>
-      <mat-error *ngIf="searchField.invalid">{{_getErrorMessage()}}</mat-error>
+  <mat-form-field style="width: 100%" appearance="outline">
+    <mat-label>Movie Search</mat-label>
+    <input #searchInput
+           [matAutocomplete]="auto"
+           matInput
+           placeholder="Searching by Movie Search"
+           type="text"
+           [formControl]="searchField"
+           (keyup.enter)="_searching()">
+    <button matSuffix mat-mini-fab color="primary" (submit)="_searching()">
+      <mat-icon>search</mat-icon>
+    </button>
+    <mat-error *ngIf="searchField.invalid">{{_getErrorMessage()}}</mat-error>
 
-      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="_selectResult($event)">
-        <mat-option *ngFor="let autocompleteResult of autocompleteResults">
-          <div>{{autocompleteResult}}</div>
-        </mat-option>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="_selectResult($event)">
+      <mat-option *ngFor="let autocompleteResult of autocompleteResults">
+        <div>{{autocompleteResult}}</div>
+      </mat-option>
 
-      </mat-autocomplete>
-    </mat-form-field>
+    </mat-autocomplete>
+  </mat-form-field>
 </div>

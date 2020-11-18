@@ -3,6 +3,7 @@ import {SearchResults} from '../dummydata/search-results';
 import {HttpService} from '../_helper/http.service';
 import {OmdbHttpService} from '../_helper/omdb-http.service';
 import {environment} from '../../environments/environment';
+import { TheMovieDBHttpService } from '../_helper/the-movie-dbhttp.service';
 import {QueryResult} from '../models/query-result';
 
 @Injectable({
@@ -12,7 +13,8 @@ export class SearchResultsService {
 
   constructor(private searchResults: SearchResults,
               private http: HttpService,
-              private OMDbHttp: OmdbHttpService) {
+              private OMDbHttp: OmdbHttpService,
+              private PostMovieDbHttp: TheMovieDBHttpService ) {
   }
 
   _getAllSearchResults(data): Promise<string[]> {
@@ -52,5 +54,19 @@ export class SearchResultsService {
     }
 
     return [...new Set(response.Search.map(movie => movie.Title))];
+  }
+
+  async _getPosterResult(element) {
+    const httpOptions = {
+      params: {
+        api_key: environment.PosterMovieDB_APIKey,
+        query: element
+      }
+    };
+    const response = await this.PostMovieDbHttp.get(httpOptions);
+    if (response.total_results === 0) {
+      return 'nothing found';
+    }
+    return environment.Post_API_HOST + response.results[0].poster_path;
   }
 }
