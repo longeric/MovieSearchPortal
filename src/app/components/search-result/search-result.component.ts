@@ -20,6 +20,8 @@ export class SearchResultComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<QueryResult>;
   running: number;
 
+  postUrl: any;
+
   @ViewChild('matPaginator', {static: true})
   paginator: MatPaginator;
 
@@ -64,26 +66,26 @@ export class SearchResultComponent implements OnInit, AfterViewInit {
     return 'https://en.wikipedia.org/wiki/' + element;
   }
 
-  _getPosterResult(element: string){
-    console.log(this.searchResultsService._getPosterResult(element));
-    var result = this.searchResultsService._getPosterResult(element);
-    //const postUrl:String = "";
-    // if(result == "nothing found")
-       const postUrl = "assets/nothing_found.png";
-    // else{
-    //   const postUrl = result;
-    // }
+  async _getPosterResult(element: string) {
 
-     return postUrl;
+    const result = await this.searchResultsService._getPosterResult(element);
+
+    if (result === 'nothing found') {
+      this.postUrl = 'assets/nothing_found.png';
+    } else {
+      this.postUrl = result;
+    }
+
+    // return 'assets/nothing_found.png';
   }
 
-  openDialog(element:string){
-    let poster = this.dialog.open(PosterDialogComponent, {data: {url: this._getPosterResult(element)},
-                                                          height: '400px',
-                                                          width: '300px',
-                                                          position: {right: '2%', bottom: '1%'}
-                                  });
-
-    
-  }
+  // openDialog(element: string){
+  //   const poster = this.dialog.open(PosterDialogComponent, {data: {url: this._getPosterResult(element)},
+  //                                                         height: '400px',
+  //                                                         width: '300px',
+  //                                                         position: {right: '2%', bottom: '1%'}
+  //                                 });
+  //
+  //
+  // }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import {Component, OnInit, Inject, Input} from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
@@ -7,8 +7,10 @@ import { MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['./poster-dialog.component.css']
 })
 export class PosterDialogComponent implements OnInit {
+  @Input()
+  url: string;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data:any) { }
+  constructor() { }
 
   ngOnInit() {
   }

@@ -17,6 +17,8 @@ import {MatPaginatorModule} from '@angular/material';
 import {MatIconModule} from '@angular/material';
 import { PosterDialogComponent } from './components/poster-dialog/poster-dialog.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {MdePopoverModule} from '@material-extended/mde';
+import {MatCardModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatPaginatorModule,
     MatIconModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MdePopoverModule,
+    MatCardModule
   ],
   providers: [
     SearchResults],

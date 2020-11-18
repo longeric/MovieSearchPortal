@@ -1,2 +1,10 @@
-<h2 mat-dialog-title>Found poster here</h2>
-<mat-dialog-content><img src="{{data.url}}" width='300px'></mat-dialog-content>
+<!--<h2 mat-dialog-title>Found poster here</h2>-->
+<!--<mat-dialog-content><img src="{{url}}" width='300px'></mat-dialog-content>-->
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title>Found poster here</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image [src]="url" width="100px">
+
+</mat-card>
