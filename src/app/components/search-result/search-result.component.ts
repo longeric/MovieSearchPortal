@@ -67,7 +67,7 @@ export class SearchResultComponent implements OnInit, AfterViewInit {
     const result = await this.searchResultsService._getPosterResult(element);
 
     if (result === 'nothing found') {
-      this.postUrl = 'assets/nothing_found.png';
+      this.postUrl = '../assets/nothing_found.png';
     } else {
       this.postUrl = result;
     }
