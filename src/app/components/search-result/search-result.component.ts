@@ -75,17 +75,5 @@ export class SearchResultComponent implements OnInit, AfterViewInit {
     } else {
       this.postUrl = result;
     }
-
-    // return 'assets/nothing_found.png';
   }
-
-  // openDialog(element: string){
-  //   const poster = this.dialog.open(PosterDialogComponent, {data: {url: this._getPosterResult(element)},
-  //                                                         height: '400px',
-  //                                                         width: '300px',
-  //                                                         position: {right: '2%', bottom: '1%'}
-  //                                 });
-  //
-  //
-  // }
 }

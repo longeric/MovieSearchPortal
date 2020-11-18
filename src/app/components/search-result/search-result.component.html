@@ -27,12 +27,11 @@
         <h3 mdePopoverTarget #filmDetail="mdePopoverTarget">
 
           <a [href]="_getUrl(element.title)" target="_blank" style="text-decoration: none" [mdePopoverTriggerFor]="posterPopover" (mouseover)="_getPosterResult(element.title)" [mdePopoverTargetAt]="filmDetail" mdePopoverTriggerOn="hover">{{element.title}}</a>
-
-<!--          <app-poster-dialog (show)="this.showDialog" [url] = "_getPosterResult(element.title)"></app-poster-dialog>-->
         </h3>
         <div [innerHTML]=element.content></div>
         <br>
-        <mde-popover #posterPopover="mdePopover" [mdePopoverOverlapTrigger]="false" [mdePopoverOffsetX]="1000" [mdePopoverOffsetY]="0" [mdePopoverArrowOffsetX]="18" mdePopoverArrowColor="#FFFFFF" [mdePopoverCloseOnClick]="false">
+        <mde-popover #posterPopover="mdePopover" [mdePopoverOverlapTrigger]="false" [mdePopoverOffsetX]="600" [mdePopoverOffsetY]="0" 
+          mdePopoverArrowColor="#FFFFFF" [mdePopoverCloseOnClick]="false">
           <app-poster-dialog [url] = "this.postUrl"></app-poster-dialog>
         </mde-popover>
       </td>
