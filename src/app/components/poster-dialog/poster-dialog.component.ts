@@ -1,5 +1,4 @@
-import {Component, OnInit, Inject, Input} from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import {Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-poster-dialog',

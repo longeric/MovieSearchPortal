@@ -4,12 +4,12 @@
 
 export const environment = {
   production: false,
-  // API_HOST: "http://infsci2140-backend.azurewebsites.net"
   API_HOST: 'http://localhost:8080',
   OMDb_HOST: 'https://www.omdbapi.com',
   OMDb_APIKEY: 'c7a67f5a',
   PosterMovieDB_Host: 'https://api.themoviedb.org/3/search/movie?',
-  PosterMovieDB_APIKey: '15d2ea6d0dc1d476efbca3eba2b9bbfb' 
+  PosterMovieDB_APIKey: '15d2ea6d0dc1d476efbca3eba2b9bbfb',
+  Post_API_HOST: 'http://image.tmdb.org/t/p/w500/',
 };
 
 /*

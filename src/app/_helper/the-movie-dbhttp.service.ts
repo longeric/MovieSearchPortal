@@ -9,7 +9,7 @@ export class TheMovieDBHttpService {
 
   constructor(private http: HttpClient) { }
 
-  get<T>(HttpOptions: any):Promise<any> {
+  get<T>(HttpOptions: any): Promise<any> {
     return this.http.get<T>(`${environment.PosterMovieDB_Host}`, HttpOptions)
       .toPromise()
       .catch(e => {

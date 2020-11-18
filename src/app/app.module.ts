@@ -15,7 +15,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {MatDialogModule, MatTableModule} from '@angular/material';
 import {MatPaginatorModule} from '@angular/material';
 import {MatIconModule} from '@angular/material';
-import { PosterDialogComponent } from './components/poster-dialog/poster-dialog.component';
+import {PosterDialogComponent} from './components/poster-dialog/poster-dialog.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MdePopoverModule} from '@material-extended/mde';
 import {MatCardModule} from '@angular/material';
