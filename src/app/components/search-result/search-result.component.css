@@ -17,3 +17,7 @@ a:active {
   text-decoration: underline;
   color: cadetblue;
 }
+
+.surrogate{
+  font-size: large;
+}
