@@ -30,7 +30,7 @@
              [mdePopoverTriggerFor]="posterPopover" (mouseover)="_getPosterResult(element.title)"
              [mdePopoverTargetAt]="filmDetail" mdePopoverTriggerOn="hover">{{element.title}}</a>
         </h3>
-        <div [innerHTML]=element.content></div>
+        <div class="surrogate" [innerHTML]=element.content></div>
         <br>
         <mde-popover #posterPopover="mdePopover" [mdePopoverOverlapTrigger]="false" [mdePopoverOffsetX]="600"
                      [mdePopoverOffsetY]="0"

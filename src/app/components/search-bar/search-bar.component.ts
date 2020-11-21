@@ -79,10 +79,10 @@ export class SearchBarComponent implements OnInit, AfterViewInit {
       return 'You must enter a search content';
     }
     if (this.searchField.hasError('minlength')) {
-      return 'You must enter a content length over 10 ';
+      return 'You\'d better enter a content length over 10 ';
     }
     if (this.searchField.hasError('maxlength')) {
-      return 'You must enter a content length below 50 ';
+      return 'You\'d better enter a content length below 100 ';
     }
   }
 }

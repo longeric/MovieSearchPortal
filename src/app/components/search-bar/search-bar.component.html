@@ -8,7 +8,7 @@
            type="text"
            [formControl]="searchField"
            (keyup.enter)="_searching()">
-    <button matSuffix mat-mini-fab color="primary" (submit)="_searching()">
+    <button matSuffix mat-mini-fab color="primary" (click)="_searching()">
       <mat-icon>search</mat-icon>
     </button>
     <mat-error *ngIf="searchField.invalid">{{_getErrorMessage()}}</mat-error>
